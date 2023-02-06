@@ -19,6 +19,7 @@ public class HW1A2 {
     private int[] integers;
     private int evenIndexSum;
     private int oddIndexSum;
+    private double arrayAverage;
     private boolean running = true;
 
     public HW1A2() {
@@ -47,11 +48,64 @@ public class HW1A2 {
     }
 
     public void start() {
+        int choice = -1;
+        System.out.println("Please enter the array size: ");
+        int arraySize = consoleIn.nextInt();
+        initArray(arraySize);
+        System.out.println(Arrays.toString(integers));
         while(running) {
-            //TODO: Implement the menu
-            System.out.println("Not implemented yet.");
-            running = false;
+            printActions();
+            if(consoleIn.hasNextInt())
+            {
+                choice = consoleIn.nextInt();
+                consoleIn.nextLine();
+                switch(choice)
+                {
+                    case 0:
+                        System.out.println("Exiting the program...");
+                        running = false;
+                        break;
+                    case 1:
+                        System.out.println("Minimum of the array: " + min());
+                        break;
+                    case 2:
+                        System.out.println("Maximum of the array: " + max());
+                        break;
+                    case 3:
+                        System.out.println("\nDifferences: " + Arrays.toString(averageArray()) +" Average of the array: " + arrayAverage); 
+                        break;
+                    case 4:
+                        System.out.println("Sum of odd elements: " + oddIndexSum + "\nSum of even elements: " + evenIndexSum);
+                        break;
+                    default:
+                        running = false;
+                        break;
+                }
+            }
+            else 
+            {
+                running = false;
+            }
+           System.out.println("-----------------------------"); 
         }
+    }
+    
+    public void printActions() {
+        String textBlock = """
+                Available actions:
+                                
+                0 - to exit the program
+      
+                1 - to find the minimum of the array
+
+                2 - to find the maximum of the array
+
+                3 - to display the average of the array and how each element differs from it
+
+                4 - to find the sum of odd and even elements
+                                
+                Enter a number for which action you want to do:""";
+        System.out.print(textBlock + " ");
     }
 
     private double[] averageArray() {
@@ -60,7 +114,7 @@ public class HW1A2 {
         double sum = evenIndexSum + oddIndexSum;
 
         //find the average of array elements
-        double arrayAverage = sum / integers.length;
+        arrayAverage = sum / integers.length;
 
         //fill the result array with differences between array elements and average
         for (int i = 0; i < integers.length; i++) {
