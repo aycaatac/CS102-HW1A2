@@ -72,6 +72,33 @@ public class HW1A2 {
         System.out.println(Arrays.toString(result));
     }
 
+    public static void min(int[] inputArray) {
+        int min = Integer.MAX_VALUE;
+
+        //find the minimum of the array elements
+        for(int i = 0; i< inputArray.length; i++){
+            if(inputArray[i]<min){
+                min = inputArray[i];
+            }
+        }
+
+        //display the minimum element
+        System.out.println("The element with the minimum value is: " + min);            
+    }
+    public static void max(int[] inputArray) {
+        int max = Integer.MIN_VALUE;
+
+        //find the maximum of the array elements
+        for(int i = 0; i< inputArray.length; i++){
+            if(inputArray[i]>max){
+                max = inputArray[i];
+            }
+        }
+         
+        //display the maximum element
+        System.out.println("The element with the maximum value is: " + max);            
+    }
+
     private int nextValidInteger() {
         int ret = Integer.MIN_VALUE;
         boolean found = false;
