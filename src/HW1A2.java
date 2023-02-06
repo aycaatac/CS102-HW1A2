@@ -53,6 +53,27 @@ public class HW1A2 {
             running = false;
         }
     }
+    
+    public static void averageArray(int[] values) {
+        double sum = 0;
+        double[] result = new double[values.length];
+
+        //find the sum of array elements
+        for (int i = 0; i < values.length; i++) {
+            sum += values[i];
+        }
+
+        //find the average of array elements
+        double arrayAverage = sum / values.length;
+
+        //fill the result array with differences between array elements and average
+        for (int k = 0; k < values.length; k++) {
+            result[k] = values[k] - arrayAverage;
+        }
+
+        //display the result array
+        System.out.println(Arrays.toString(result));
+    }
 
     private int nextValidInteger() {
         int ret = Integer.MIN_VALUE;
