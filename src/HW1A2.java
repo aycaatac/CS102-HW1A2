@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -54,8 +53,8 @@ public class HW1A2 {
             running = false;
         }
     }
-    
-    public void averageArray() {
+
+    private double[] averageArray() {
         double[] result = new double[integers.length];
 
         double sum = evenIndexSum + oddIndexSum;
@@ -64,39 +63,39 @@ public class HW1A2 {
         double arrayAverage = sum / integers.length;
 
         //fill the result array with differences between array elements and average
-        for (int k = 0; k < integers.length; k++) {
-            result[k] = integers[k] - arrayAverage;
+        for (int i = 0; i < integers.length; i++) {
+            result[i] = integers[i] - arrayAverage;
         }
 
-        //display the result array
-        System.out.println(Arrays.toString(result));
+        //return the array
+        return result;
     }
 
-    public static void min(int[] inputArray) {
+    private int min() {
         int min = Integer.MAX_VALUE;
 
         //find the minimum of the array elements
-        for(int i = 0; i< inputArray.length; i++){
-            if(inputArray[i]<min){
-                min = inputArray[i];
+        for(int i = 0; i < integers.length; i++){
+            if(integers[i] < min){
+                min = integers[i];
             }
         }
 
-        //display the minimum element
-        System.out.println("The element with the minimum value is: " + min);            
+        //return the minimum element
+        return min;
     }
-    public static void max(int[] inputArray) {
+    private int max() {
         int max = Integer.MIN_VALUE;
 
         //find the maximum of the array elements
-        for(int i = 0; i< inputArray.length; i++){
-            if(inputArray[i]>max){
-                max = inputArray[i];
+        for(int i = 0; i < integers.length; i++){
+            if(integers[i] > max){
+                max = integers[i];
             }
         }
-         
-        //display the maximum element
-        System.out.println("The element with the maximum value is: " + max);            
+
+        //return the maximum element
+        return max;
     }
 
     private int nextValidInteger() {
