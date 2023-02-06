@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,19 +17,19 @@ public class HW1A2 {
     //Variables
     private final Random random;
     private final Scanner consoleIn;
-    private final int[] integers;
+    private int[] integers;
     private int evenIndexSum;
     private int oddIndexSum;
     private boolean running = true;
 
     public HW1A2() {
-        //region Initialize variables
+        //Initialize variables
         random = new Random();
         consoleIn = new Scanner(System.in);
+    }
 
-        int size = RANGE_MAX - RANGE_MIN + 1;
+    private void initArray(int size) {
         integers = new int[size];
-        //endregion
 
         //region Fill the integers array
         //Fill even indexes and add the numbers
@@ -54,21 +55,17 @@ public class HW1A2 {
         }
     }
     
-    public static void averageArray(int[] values) {
-        double sum = 0;
-        double[] result = new double[values.length];
+    public void averageArray() {
+        double[] result = new double[integers.length];
 
-        //find the sum of array elements
-        for (int i = 0; i < values.length; i++) {
-            sum += values[i];
-        }
+        double sum = evenIndexSum + oddIndexSum;
 
         //find the average of array elements
-        double arrayAverage = sum / values.length;
+        double arrayAverage = sum / integers.length;
 
         //fill the result array with differences between array elements and average
-        for (int k = 0; k < values.length; k++) {
-            result[k] = values[k] - arrayAverage;
+        for (int k = 0; k < integers.length; k++) {
+            result[k] = integers[k] - arrayAverage;
         }
 
         //display the result array
