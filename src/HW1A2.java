@@ -74,5 +74,26 @@ public class HW1A2 {
         //endregion
         return ret;
     }
+    
+    public static void averageArray(int[] values) {
+        int sum = 0;
+        int[] result = new int[values.length];
+
+        //find the sum of array elements
+        for (int i = 0; i < values.length; i++) {
+            sum += values[i];
+        }
+
+        //find the average of the array
+        int arrayAverage = sum / values.length;
+
+        //fill a new array with differences between array elements and average
+        for (int k = 0; k < values.length; k++) {
+            result[k] = values[k] - arrayAverage;
+        }
+
+        //print the result array
+        System.out.println(Arrays.toString(result));
+    }
 
 }
