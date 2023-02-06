@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  * This is a class designed to operate as specified in the
@@ -48,49 +49,41 @@ public class HW1A2 {
     }
 
     public void start() {
-        int choice = -1;
         System.out.println("Please enter the array size: ");
-        int arraySize = consoleIn.nextInt();
+        int arraySize = nextValidInteger();
         initArray(arraySize);
+        System.out.println("The array has been created:");
         System.out.println(Arrays.toString(integers));
         while(running) {
             printActions();
-            if(consoleIn.hasNextInt())
+            int choice = nextValidInteger();
+            switch(choice)
             {
-                choice = consoleIn.nextInt();
-                consoleIn.nextLine();
-                switch(choice)
-                {
-                    case 0:
-                        System.out.println("Exiting the program...");
-                        running = false;
-                        break;
-                    case 1:
-                        System.out.println("Minimum of the array: " + min());
-                        break;
-                    case 2:
-                        System.out.println("Maximum of the array: " + max());
-                        break;
-                    case 3:
-                        System.out.println("\nDifferences: " + Arrays.toString(averageArray()) +" Average of the array: " + arrayAverage); 
-                        break;
-                    case 4:
-                        System.out.println("Sum of odd elements: " + oddIndexSum + "\nSum of even elements: " + evenIndexSum);
-                        break;
-                    default:
-                        running = false;
-                        break;
-                }
+                case 0:
+                    System.out.println("Exiting the program...");
+                    running = false;
+                    break;
+                case 1:
+                    System.out.println("Minimum of the array: " + min());
+                    break;
+                case 2:
+                    System.out.println("Maximum of the array: " + max());
+                    break;
+                case 3:
+                    System.out.println("Differences: " + Arrays.toString(averageArray()) + "\nAverage of the array: " + arrayAverage);
+                    break;
+                case 4:
+                    System.out.println("Sum of odd indexed elements: " + oddIndexSum + "\nSum of even indexed elements: " + evenIndexSum);
+                    break;
+                default:
+                    System.out.println("Please enter a valid action.");
+                    break;
             }
-            else 
-            {
-                running = false;
-            }
-           System.out.println("-----------------------------"); 
+            System.out.println("-----------------------------");
         }
     }
     
-    public void printActions() {
+    private void printActions() {
         String textBlock = """
                 Available actions:
                                 
@@ -104,8 +97,8 @@ public class HW1A2 {
 
                 4 - to find the sum of odd and even elements
                                 
-                Enter a number for which action you want to do:""";
-        System.out.print(textBlock + " ");
+                Enter a number for which action you want to do: """;
+        System.out.print(textBlock);
     }
 
     private double[] averageArray() {
@@ -165,7 +158,7 @@ public class HW1A2 {
                 consoleIn.nextLine();
             }
             else {
-                System.out.println("Please enter a valid integer.");
+                System.out.println("Please enter a valid integer: ");
                 consoleIn.nextLine();
             }
         }
